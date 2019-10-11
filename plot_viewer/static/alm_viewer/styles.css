@@ -1,0 +1,33 @@
+
+* {
+  box-sizing: border-box;
+}
+
+.column {
+  float: left;
+  width: 25%;
+  padding: 1%;
+}
+
+.scrolling-wrapper-flexbox {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+
+  .card {
+    flex: 0 0 auto;
+  }
+}
+
+#rows {
+    overflow: visible;
+    white-space:nowrap;
+    height: auto;
+}
+
+
+.slide {
+    width: auto;
+    height: auto;
+    display: inline-block;
+}

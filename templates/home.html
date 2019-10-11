@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+
+<h4>x axis: {{x_axis_input}}</h4>
+<h4>y axis: {{y_axis_input}}</h4>
+<h4>filter value: {{filter_value}}</h4>
+<h4>normalization input: {{normalization_input}}</h4>
+
+{% for lists in xy_sort %}
+<div id="rows">
+  {% for plots in lists %}
+  <div class="slide">
+    <img src="{{plots.model_img_url}}" style="width:100%" href="https://s3-us-west-1.amazonaws.com/lctk.data/derin-test/mixed_mix_output.csv">
+    <br>
+    <a href="{{plots.csv_url}}" download><i class="fa fa-download"></i> Download CSV</a>
+  </div>
+  {% endfor %}
+</div>
+{% endfor %}
+
+
+
+<div action="{% url 'plot_viewer:home' %}" method="index" style="display:none">
+  <div id='locations'>
+    <option disabled selected value> -Location- </option>
+    {% for objects in dist_loc %}
+      <option value="{{objects}}">{{objects}}</option>
+    {% endfor %}
+  </div>
+
+  <div id='seasons'>
+    <option disabled selected value> -Season- </option>
+    {% for objects in dist_season %}
+      <option value="{{objects}}">{{objects}}</option>
+    {% endfor %}
+  </div>
+
+  <div id='mix_types'>
+    <option disabled selected value> -Mix Types- </option>
+    {% for objects in dist_mt %}
+      <option value="{{objects}}">{{objects}}</option>
+    {% endfor %}
+  </div>
+</div>
+
+
+{% endblock %}
